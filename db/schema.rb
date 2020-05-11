@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_001525) do
+ActiveRecord::Schema.define(version: 2020_05_11_001504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "listings", force: :cascade do |t|
+    t.string "item_name"
+    t.text "description"
     t.float "price"
-    t.integer "buyer_id"
     t.integer "seller_id"
+    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
