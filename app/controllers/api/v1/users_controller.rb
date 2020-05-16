@@ -4,12 +4,12 @@ class Api::V1::UsersController < ApplicationController
   # GET /users
   def index
     users = User.all
-    render json: users, include: [:seller_transactions, :buyer_transactions], except: [:password_digest, :created_at, :updated_at]
+    render json: users
   end
 
   # GET /users/1
   def show
-    render json: user, include: [:seller_transactions, :buyer_transactions], except: [:password_digest, :created_at, :updated_at]
+    render json: user
   end
 
   # POST /users
@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.create(user_params)
     if user.valid?
         token = JWT.encode({user_id: user.id}, secret, 'HS256')
-        render json: {user: user.as_json(except: [:password_digest, :created_at, :updated_at]), token: token}
+        render json: {user: user, token: token}
     else
       render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
     end
