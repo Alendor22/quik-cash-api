@@ -6,21 +6,20 @@ class Api::V1::ListingsController < ApplicationController
   def index
     listings = Listing.all
 
-    render json: listings, include: [:buyer, :seller], except: [:created_at, :updated_at]
+    render json: listings
   end
 
   # GET /listings/1
   def show
-    render json: listing, include: [:buyer, :seller], except: [:created_at, :updated_at]
+    render json: listing
   end
 
   # POST /listings
   def create
-    current_user ?
+    current_user ? current_user : render_unauthorized_response
     listing = Listing.new(listing_params)
     if listing.save
-      render json: listing, status: :created, location: listing
-    : render_unauthorized_response
+      render json: listing, status: :created
     else
       render json: listing.errors, status: :unprocessable_entity
     end
@@ -48,6 +47,6 @@ class Api::V1::ListingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
-      params.require(:listing).permit(:item_name, :description, :price)
+      params.require(:listing).permit(:item_name, :description, :price, :seller_id)
     end
 end
