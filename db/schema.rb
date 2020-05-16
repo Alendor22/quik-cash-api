@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_001504) do
     t.string "item_name"
     t.text "description"
     t.float "price"
+    t.boolean "sold", default: false
     t.integer "seller_id"
     t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
