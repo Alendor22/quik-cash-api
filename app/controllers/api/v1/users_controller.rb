@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.create(user_params)
     if user.valid?
         token = JWT.encode({user_id: user.id}, secret, 'HS256')
-        render json: {user: user, token: token}
+        render json: {user: user.as_json(except: [:password_digest, :created_at, :updated_at]), token: token}
     else
       render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
     end
@@ -51,6 +51,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.permit(:username, :password)
+      params.permit(:username, :password, :location, :bio)
     end
 end
