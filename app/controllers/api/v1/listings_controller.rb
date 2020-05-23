@@ -11,7 +11,7 @@ class Api::V1::ListingsController < ApplicationController
 
   # GET /listings/1
   def show
-    render json: listing
+    render json: @listing
   end
 
   # POST /listings
@@ -27,26 +27,26 @@ class Api::V1::ListingsController < ApplicationController
 
   # PATCH/PUT /listings/1
   def update
-    if listing.update(listing_params)
-      render json: listing
+    if @listing.update(listing_params)
+      render json: @listing
     else
-      render json: listing.errors, status: :unprocessable_entity
+      render json: @listing.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /listings/1
   def destroy
-    listing.destroy
+    @listing.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
-      listing = Listing.find(params[:id])
+      @listing = Listing.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
-      params.require(:listing).permit(:item_name, :description, :price, :seller_id)
+      params.require(:listing).permit(:item_name, :description, :price, :seller_id, :sold, :buyer_id)
     end
 end
