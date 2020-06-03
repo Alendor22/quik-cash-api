@@ -18,11 +18,11 @@ class Api::V1::ListingsController < ApplicationController
   def create
     current_user ? current_user : render_unauthorized_response
     listing = Listing.new(listing_params)
-    if listing.save
-      render json: listing, status: :created
-    else
-      render json: listing.errors, status: :unprocessable_entity
-    end
+      if listing.save
+        render json: listing, status: :created
+      else
+        render json: listing.errors, status: :unprocessable_entity
+      end
   end
 
   # PATCH/PUT /listings/1
