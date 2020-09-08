@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  root :to => 'listings#index'
   namespace :api do
     namespace :v1 do
       post 'login', to: "auth#login"
