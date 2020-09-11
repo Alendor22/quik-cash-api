@@ -79,7 +79,18 @@ test:
   #   url: <%= ENV['http://quik-cash-api.herokuapp.com/'] %>
 #
 production:
-  <<: *default
-  database: quik_cash_production
-  username: quik_cash
-  password: <%= ENV['QUIK_CASH_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  LANG: en_US.UTF-8
+  RACK_ENV: production
+  RAILS_ENV: production
+  RAILS_LOG_TO_STDOUT: enabled
+  RAILS_SERVE_STATIC_FILES: enabled
+  SECRET_KEY_BASE: 4bc8836952077c8e9bb59f00f508fce536ff7a45fecde8509a0024060261e280183d85f93bab6110387b737c116813002351c8bef0bad8f800663665069b6eaa
+  # database: quik_cash_production
+  # pool: 5
+  # username: my_username
+  # password:
+  # <<: *default
+  # database: quik_cash_production
+  # username: quik_cash
+  # password: <%= ENV['QUIK_CASH_DATABASE_PASSWORD'] %>
