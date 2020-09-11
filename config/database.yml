@@ -71,26 +71,16 @@ test:
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #
-#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+  # DATABASE_URL="postgres://keupaarvbqqhce:49934ed69c23ef579af0473fdc7455fd75bc628f16bea18c2463e794acff00b6@ec2-34-192-122-0.compute-1.amazonaws.com:5432/ddk4p310j47s7p"
 #
 # You can use this database configuration with:
 #
-  # production:
-  #   url: <%= ENV['http://quik-cash-api.herokuapp.com/'] %>
-#
+  production:
+    url: <%= ENV['postgres://keupaarvbqqhce:49934ed69c23ef579af0473fdc7455fd75bc628f16bea18c2463e794acff00b6@ec2-34-192-122-0.compute-1.amazonaws.com:5432/ddk4p310j47s7p'] %>
+
 production:
-  adapter: postgresql
-  LANG: en_US.UTF-8
-  RACK_ENV: production
-  RAILS_ENV: production
-  RAILS_LOG_TO_STDOUT: enabled
-  RAILS_SERVE_STATIC_FILES: enabled
-  SECRET_KEY_BASE: 4bc8836952077c8e9bb59f00f508fce536ff7a45fecde8509a0024060261e280183d85f93bab6110387b737c116813002351c8bef0bad8f800663665069b6eaa
-  # database: quik_cash_production
-  # pool: 5
-  # username: my_username
-  # password:
-  # <<: *default
-  # database: quik_cash_production
-  # username: quik_cash
-  # password: <%= ENV['QUIK_CASH_DATABASE_PASSWORD'] %>
+  primary:
+  <<: *default
+  database: quik_cash_production
+  username: quik_cash
+  password: <%= ENV['QUIK_CASH_DATABASE_PASSWORD'] %>
