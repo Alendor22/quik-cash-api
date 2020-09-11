@@ -75,8 +75,8 @@ test:
 #
 # You can use this database configuration with:
 #
-  production:
-    url: <%= ENV['postgres://keupaarvbqqhce:49934ed69c23ef579af0473fdc7455fd75bc628f16bea18c2463e794acff00b6@ec2-34-192-122-0.compute-1.amazonaws.com:5432/ddk4p310j47s7p] %>
+  # production:
+  #   url: <%= ENV['http://quik-cash-api.herokuapp.com/'] %>
 #
 production:
   <<: *default
