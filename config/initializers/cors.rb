@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://alendor22.github.io/'
+    origins 'https://quik-cash.herokuapp.com/'
 
     resource '*',
       headers: :any,
